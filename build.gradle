@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+group 'fr.envium.escryptsystem'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile ‘com.github.romaindu35:EnscryptSystem:1.0’
+}
