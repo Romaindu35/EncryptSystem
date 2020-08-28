@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'fr.envium.escryptsystem'
+group 'fr.romaindu35.escryptsystem'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -13,6 +13,6 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.github.Romaindu35:EncryptSystem:1.0'
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile ‘com.github.romaindu35:EnscryptSystem:1.0’
 }
