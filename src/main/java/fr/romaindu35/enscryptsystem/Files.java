@@ -11,24 +11,23 @@ class Files extends File {
 
     public boolean exists(Boolean afficheInforamtion) {
         File file = new File(this.getPath());
-        if (afficheInforamtion && file.exists()) {
-            System.out.println("Le fichier : " + file.getName() + ", qui a pour chemin absolu " + file.getAbsolutePath() + " existe.");
-        }
-        return super.exists();
+
+        return exists(file, afficheInforamtion);
     }
 
     public static boolean exists(File aVerifier) {
-        if (aVerifier.exists())
-            return true;
-        return false;
+        return exists(aVerifier, false);
     }
 
-    public static boolean exists(File aVerifier, Boolean afficheInforamtion) {
-        if (aVerifier.exists()) {
-            if (afficheInforamtion)
-                System.out.println("Le fichier : " + aVerifier.getName() + ", qui a pour chemin absolu " + aVerifier.getAbsolutePath() + " existe.");
-            return true;
+    public static boolean exists(File fichier, Boolean afficheInforamtion) {
+        if (afficheInforamtion) {
+            if (fichier.exists())
+                System.out.println("Le fichier : " + fichier.getName() + ", qui a pour chemin absolu " + fichier.getAbsolutePath() + " existe.");
+            else
+                System.out.println("Le fichier : " + fichier.getName() + ", qui a pour chemin absolu " + fichier.getAbsolutePath() + " n'existe pas.");
         }
+        if (fichier.exists())
+            return true;
         return false;
     }
 }

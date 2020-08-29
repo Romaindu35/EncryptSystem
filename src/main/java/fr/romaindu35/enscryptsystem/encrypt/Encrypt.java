@@ -19,12 +19,14 @@ public class Encrypt {
     private File outputFile;
     private Keys keys;
     private CipherMod cipherMod;
+    private boolean scanDir;
 
-    public Encrypt(File inputFile, File outputFile, Keys keys, CipherMod cipherMod) {
+    public Encrypt(File inputFile, File outputFile, Keys keys, CipherMod cipherMod, Boolean scanDir) {
         this.inputFile = inputFile;
         this.outputFile = outputFile;
         this.keys = keys;
         this.cipherMod = cipherMod;
+        this.scanDir = scanDir;
     }
 
     public void launch() {

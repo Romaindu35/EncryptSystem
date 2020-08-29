@@ -11,6 +11,7 @@ public class EncryptBuilder {
     private File outputFile;
     private Keys keys = new Keys();
     private CipherMod cipherMod = CipherMod.ENCRYPT_MODE;
+    private boolean scanDir = false;
 
     /**
      *
@@ -42,12 +43,16 @@ public class EncryptBuilder {
         return this;
     }
 
+    public EncryptBuilder scanDir(Boolean scanDir) {
+        this.scanDir = scanDir;
+        return this;
+    }
     /**
      *
      * @return : Return an Encrypt object from the EncryptBuilder parameters
      */
     public Encrypt build() {
-        return new Encrypt(inputFile, outputFile, keys, cipherMod);
+        return new Encrypt(inputFile, outputFile, keys, cipherMod, scanDir);
     }
 
 }
