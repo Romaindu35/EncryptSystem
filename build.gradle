@@ -8,11 +8,11 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
     maven {
-        url "https://jitpack.io"
+        url 'https://jitpack.io'
     }
 }
 
 dependencies {
-    implementation 'com.github.Romaindu35:EncryptSystem:1.0'
+    //implementation 'com.github.Romaindu35:EnscryptSystem:e4a29238b2'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
