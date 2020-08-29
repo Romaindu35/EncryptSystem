@@ -11,10 +11,18 @@ public enum  CipherMod {
 
     private int mod;
 
+    /**
+     *
+     * @param encryptMode : Assigns the mod type to the mod variable: ENCRYPT_MOD or DECRYPT_MOD
+     */
     CipherMod(int encryptMode) {
         this.mod = encryptMode;
     }
 
+    /**
+     *
+     * @return : returns an int according to the chosen mod: ENCRYPT_MOD or DECRYPT_MOD
+     */
     public int getEncryptMod() {
         return this.mod;
     }
