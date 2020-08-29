@@ -1,7 +1,6 @@
 package fr.romaindu35.enscryptsystem;
 
 import fr.romaindu35.enscryptsystem.exception.FileDoesntExistsExecption;
-import fr.romaindu35.enscryptsystem.exception.LengthKeyIncompatibleException;
 import fr.romaindu35.enscryptsystem.exception.NotDirectoryException;
 
 import java.io.File;

@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Encrypt {
 
@@ -30,17 +32,28 @@ public class Encrypt {
     }
 
     public void launch() {
+        if (!scanDir)
+            crypt(inputFile, outputFile);
+        else {
+            for (File listFile : inputFile.listFiles()) {
+                crypt(listFile, new File(outputFile.getPath() + "/" + listFile.getName()));
+            }
+        }
+    }
+
+    private void crypt(File file, File fileTo) {
         try {
             Key secretKey = new SecretKeySpec(keys.getKey().getBytes(), "AES");
             Cipher cipher = Cipher.getInstance("AES");
             cipher.init(cipherMod.getEncryptMod(), secretKey);
 
-            FileInputStream inputStream = new FileInputStream(inputFile);byte[] inputBytes = new byte[(int) inputFile.length()];
+            FileInputStream inputStream = new FileInputStream(file);
+            byte[] inputBytes = new byte[(int) file.length()];
             inputStream.read(inputBytes);
 
             byte[] outputBytes = cipher.doFinal(inputBytes);
 
-            FileOutputStream outputStream = new FileOutputStream(outputFile);
+            FileOutputStream outputStream = new FileOutputStream(fileTo);
             outputStream.write(outputBytes);
 
             inputStream.close();
@@ -50,5 +63,4 @@ public class Encrypt {
             e.printStackTrace();
         }
     }
-
 }
