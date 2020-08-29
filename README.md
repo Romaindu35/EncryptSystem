@@ -4,7 +4,7 @@ Encrypt System simplifies the creation of a system of obfuscation of your code.
 
 # How to use it
 
-to use it you just have to create a new EnscryptBuilder object, build it, then run it.
+To use it you just have to create a new EnscryptBuilder object, build it, then run it.
 See this example below
 
 ```
