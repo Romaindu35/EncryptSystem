@@ -1,8 +1,8 @@
-package fr.romaindu35.enscryptsystem;
+package fr.romaindu35.enscryptsystem.utils;
 
 import java.io.File;
 
-class Files extends File {
+public class Files extends File {
 
 
     public Files(String pathname) {

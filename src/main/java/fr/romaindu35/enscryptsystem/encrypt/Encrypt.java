@@ -1,5 +1,7 @@
 package fr.romaindu35.enscryptsystem.encrypt;
 
+import fr.romaindu35.enscryptsystem.utils.ScanDir;
+
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -13,6 +15,7 @@ import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Encrypt {
@@ -21,23 +24,34 @@ public class Encrypt {
     private File outputFile;
     private Keys keys;
     private CipherMod cipherMod;
-    private boolean scanDir;
+    private ScanDir scanDir;
 
-    public Encrypt(File inputFile, File outputFile, Keys keys, CipherMod cipherMod, Boolean scanDir) {
+    protected Encrypt(File inputFile, File outputFile, Keys keys, CipherMod cipherMod, ScanDir scanDir) {
         this.inputFile = inputFile;
         this.outputFile = outputFile;
         this.keys = keys;
         this.cipherMod = cipherMod;
         this.scanDir = scanDir;
+
     }
 
     public void launch() {
-        if (!scanDir)
+        if (!scanDir.isActivated())
             crypt(inputFile, outputFile);
         else {
             for (File listFile : inputFile.listFiles()) {
-                crypt(listFile, new File(outputFile.getPath() + "/" + listFile.getName()));
+                if (!scanDir.getFilter().getExtensionUse().isEmpty()) {
+                    for(String strings : scanDir.getFilter().getExtensionUse()){
+                        if (listFile.getName().contains(strings)) {
+                            crypt(listFile, new File(outputFile.getPath() + "/" + listFile.getName()));
+                        }
+                    }
+                } else {
+                    crypt(listFile, new File(outputFile.getPath() + "/" + listFile.getName()));
+                }
             }
+
+
         }
     }
 

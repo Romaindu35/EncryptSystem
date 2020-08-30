@@ -1,4 +1,4 @@
-package fr.romaindu35.enscryptsystem;
+package fr.romaindu35.enscryptsystem.utils;
 
 import fr.romaindu35.enscryptsystem.exception.FileDoesntExistsExecption;
 import fr.romaindu35.enscryptsystem.exception.NotDirectoryException;

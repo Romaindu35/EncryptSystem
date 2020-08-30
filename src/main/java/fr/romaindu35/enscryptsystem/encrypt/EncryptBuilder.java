@@ -1,6 +1,7 @@
 package fr.romaindu35.enscryptsystem.encrypt;
 
 import fr.romaindu35.enscryptsystem.exception.LengthKeyIncompatibleException;
+import fr.romaindu35.enscryptsystem.utils.ScanDir;
 
 import javax.crypto.Cipher;
 import java.io.File;
@@ -11,7 +12,8 @@ public class EncryptBuilder {
     private File outputFile;
     private Keys keys = new Keys();
     private CipherMod cipherMod = CipherMod.ENCRYPT_MODE;
-    private boolean scanDir = false;
+    //private boolean scanDir = false;
+    private ScanDir scanDir;
 
     /**
      *
@@ -43,7 +45,7 @@ public class EncryptBuilder {
         return this;
     }
 
-    public EncryptBuilder scanDir(Boolean scanDir) {
+    public EncryptBuilder setScanDir(ScanDir scanDir) {
         this.scanDir = scanDir;
         return this;
     }
