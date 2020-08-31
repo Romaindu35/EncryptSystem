@@ -4,10 +4,12 @@ public class ScanDir {
 
     private boolean activated;
     private Filter filter;
+    private String converExtension = "";
 
-    protected ScanDir(Boolean activated, Filter filter) {
+    protected ScanDir(Boolean activated, Filter filter, String convertExtension) {
         this.activated = activated;
         this.filter = filter;
+        this.converExtension = convertExtension;
     }
 
     public boolean isActivated() {
@@ -16,5 +18,9 @@ public class ScanDir {
 
     public Filter getFilter() {
         return filter;
+    }
+
+    public String getConverExtension() {
+        return converExtension;
     }
 }

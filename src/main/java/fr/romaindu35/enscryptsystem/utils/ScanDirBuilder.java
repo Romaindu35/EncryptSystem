@@ -4,6 +4,7 @@ public class ScanDirBuilder {
 
     private Boolean activated = false;
     private Filter filter = new Filter();
+    private String converExtension = "";
 
     public ScanDirBuilder(Boolean activated) {
         this.activated = activated;
@@ -14,8 +15,13 @@ public class ScanDirBuilder {
         return this;
     }
 
+    public ScanDirBuilder convertTo(String converExtension) {
+        this.converExtension = converExtension;
+        return this;
+    }
+
     public ScanDir build() {
-        return new ScanDir(activated, filter);
+        return new ScanDir(activated, filter, converExtension);
     }
 
 }
