@@ -31,4 +31,5 @@ public class Filter {
     public List<String> getExtensionUse() {
         return extensionUse;
     }
+
 }

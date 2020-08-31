@@ -25,6 +25,7 @@ public class Encrypt {
     private Keys keys;
     private CipherMod cipherMod;
     private ScanDir scanDir;
+    private String extension;
 
     protected Encrypt(File inputFile, File outputFile, Keys keys, CipherMod cipherMod, ScanDir scanDir) {
         this.inputFile = inputFile;
@@ -32,7 +33,7 @@ public class Encrypt {
         this.keys = keys;
         this.cipherMod = cipherMod;
         this.scanDir = scanDir;
-
+        this.extension = scanDir.getConverExtension();
     }
 
     public void launch() {
@@ -43,7 +44,7 @@ public class Encrypt {
                 if (!scanDir.getFilter().getExtensionUse().isEmpty()) {
                     for(String strings : scanDir.getFilter().getExtensionUse()){
                         if (listFile.getName().contains(strings)) {
-                            crypt(listFile, new File(outputFile.getPath() + "/" + listFile.getName()));
+                            crypt(listFile, new File(outputFile.getPath() + "/" + listFile.getName() + extension));
                         }
                     }
                 } else {
