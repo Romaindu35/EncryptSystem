@@ -14,9 +14,6 @@ import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class Encrypt {
 
@@ -44,7 +41,8 @@ public class Encrypt {
                 if (!scanDir.getFilter().getExtensionUse().isEmpty()) {
                     for(String strings : scanDir.getFilter().getExtensionUse()){
                         if (listFile.getName().contains(strings)) {
-                            crypt(listFile, new File(outputFile.getPath() + "/" + listFile.getName() + extension));
+                            crypt(listFile, new File(outputFile.getPath() + "/" +
+                                    listFile.getName().subSequence(0, listFile.getName().lastIndexOf(".")) + extension));
                         }
                     }
                 } else {
