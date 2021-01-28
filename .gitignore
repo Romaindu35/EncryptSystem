@@ -1,0 +1,5 @@
+.gradle/
+build/
+
+.idea/
+src/main/java/fr/romaindu35/enscryptsystem/Main.java
