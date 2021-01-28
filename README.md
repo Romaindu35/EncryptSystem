@@ -28,3 +28,38 @@ EncryptBuilder encryptBuilder = new EncryptBuilder(imputFiles, outputFiles).setC
 Encrypt encrypt = encryptBuilder.build();
 encrypt.launch();
 ```
+If you want to convert files in a directory, you can use the ScanDir
+
+Basic example :
+```
+ScanDirBuilder scanDirBuilder = new ScanDirBuilder(true);
+ScanDir scanDir = scanDirBuilder.build();
+EncryptBuilder encryptBuilder = new EncryptBuilder(imputFiles, outputFiles).setCipherMod(CipherMod.ENCRYPT_MODE).setKeys(new Keys("Yourkeys")).setScanDir(scanDir);
+Encrypt encrypt = encryptBuilder.build();
+encrypt.launch();
+```
+
+The ScanDir have a particularity, we can filter files to convert :
+If you want to keep only files with .zip extension, you can use this code :
+```
+ScanDirBuilder scanDirBuilder = new ScanDirBuilder(true).addFilterList(new Filter().extensionUse(".zip"));
+ScanDir scanDir = scanDirBuilder.build();
+EncryptBuilder encryptBuilder = new EncryptBuilder(imputFiles, outputFiles).setCipherMod(CipherMod.ENCRYPT_MODE).setKeys(new Keys("Yourkeys")).setScanDir(scanDir);
+Encrypt encrypt = encryptBuilder.build();
+encrypt.launch();
+```
+With the ScanDir you can also convert files in other extension :
+If you want to convert files with extension .zip to file with extension .aes, you can use this code:
+```
+ScanDirBuilder scanDirBuilder = new ScanDirBuilder(true).addFilterList(new Filter().extensionUse(".zip")).convertTo(".aes");
+ScanDir scanDir = scanDirBuilder.build();
+EncryptBuilder encryptBuilder = new EncryptBuilder(imputFiles, outputFiles).setCipherMod(CipherMod.ENCRYPT_MODE).setKeys(new Keys("Yourkeys")).setScanDir(scanDir);
+Encrypt encrypt = encryptBuilder.build();
+encrypt.launch();
+```
+
+#Notes
+
+This library is open source, licensed Apache-2.0 License.
+If you have any comments, please let me know.
+You can contact me on Discord with the nickname: romaindu35#5770
