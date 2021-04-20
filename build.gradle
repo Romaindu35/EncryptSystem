@@ -13,8 +13,7 @@ repositories {
 }
 
 dependencies {
-    //implementation 'com.github.Romaindu35:EnscryptSystem:e4a29238b2'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+
 }
 
 /* Maven central punlish code */
