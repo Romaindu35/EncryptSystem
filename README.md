@@ -10,11 +10,11 @@ To download it you have 2 choices: compile the library or use a buildTool as a g
 
 ```
 repositories {
-    maven { url 'https://jitpack.io' }
+    mavenCentral()
 }
 
 dependencies {
-    implementation 'com.github.Romaindu35:EnscryptSystem:TAG'
+    implementation 'com.github.romaindu35:enscryptsystem:TAG'
 }
 ```
 
