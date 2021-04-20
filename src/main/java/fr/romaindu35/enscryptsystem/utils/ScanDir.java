@@ -23,4 +23,6 @@ public class ScanDir {
     public String getConverExtension() {
         return converExtension;
     }
+
+    public static ScanDir EMPTY = new ScanDir(false, new Filter(), "");
 }

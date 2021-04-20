@@ -13,7 +13,7 @@ public class EncryptBuilder {
     private Keys keys = new Keys();
     private CipherMod cipherMod = CipherMod.ENCRYPT_MODE;
     //private boolean scanDir = false;
-    private ScanDir scanDir;
+    private ScanDir scanDir = ScanDir.EMPTY;
 
     /**
      *
