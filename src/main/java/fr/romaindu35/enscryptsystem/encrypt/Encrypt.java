@@ -1,18 +1,14 @@
 package fr.romaindu35.enscryptsystem.encrypt;
 
 import fr.romaindu35.enscryptsystem.utils.ScanDir;
+import fr.romaindu35.enscryptsystem.utils.Utils;
 
 import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.SecretKeySpec;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.InvalidKeyException;
-import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 
 public class Encrypt {
@@ -56,21 +52,7 @@ public class Encrypt {
 
     private void crypt(File file, File fileTo) {
         try {
-            Key secretKey = new SecretKeySpec(keys.getKey().getBytes(), "AES");
-            Cipher cipher = Cipher.getInstance("AES");
-            cipher.init(cipherMod.getEncryptMod(), secretKey);
-
-            FileInputStream inputStream = new FileInputStream(file);
-            byte[] inputBytes = new byte[(int) file.length()];
-            inputStream.read(inputBytes);
-
-            byte[] outputBytes = cipher.doFinal(inputBytes);
-
-            FileOutputStream outputStream = new FileOutputStream(fileTo);
-            outputStream.write(outputBytes);
-
-            inputStream.close();
-            outputStream.close();
+            Utils.crypt(file, fileTo, keys, cipherMod);
 
         } catch (NoSuchPaddingException | NoSuchAlgorithmException | InvalidKeyException | IOException | BadPaddingException | IllegalBlockSizeException e) {
             e.printStackTrace();
