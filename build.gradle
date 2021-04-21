@@ -16,7 +16,7 @@ dependencies {
 
 }
 
-/* Maven central punlish code */
+/* Maven central publish code */
 task sourcesJar(type: Jar) {
     classifier 'sources'
     from sourceSets.main.allSource
