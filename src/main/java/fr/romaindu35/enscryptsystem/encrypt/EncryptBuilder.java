@@ -10,10 +10,13 @@ public class EncryptBuilder {
 
     private File inputFile;
     private File outputFile;
+
+    private ScanDir scanDir;
+
     private Keys keys = new Keys();
     private CipherMod cipherMod = CipherMod.ENCRYPT_MODE;
-    //private boolean scanDir = false;
-    private ScanDir scanDir = ScanDir.EMPTY;
+
+    private Encrypt.Type type;
 
     /**
      *
@@ -23,6 +26,16 @@ public class EncryptBuilder {
     public EncryptBuilder(File inputFile, File outputFile) {
         this.inputFile = inputFile;
         this.outputFile = outputFile;
+        this.type = Encrypt.Type.FILE;
+    }
+
+    /**
+     *
+     * @param scanDir : object ScanDir create by ScaDirBuilder
+     */
+    public EncryptBuilder(ScanDir scanDir) {
+        this.scanDir = scanDir;
+        this.type = Encrypt.Type.DIR;
     }
 
     /**
@@ -45,16 +58,15 @@ public class EncryptBuilder {
         return this;
     }
 
-    public EncryptBuilder setScanDir(ScanDir scanDir) {
-        this.scanDir = scanDir;
-        return this;
-    }
     /**
      *
      * @return : Return an Encrypt object from the EncryptBuilder parameters
      */
     public Encrypt build() {
-        return new Encrypt(inputFile, outputFile, keys, cipherMod, scanDir);
+        if (type == Encrypt.Type.FILE)
+            return new Encrypt(inputFile, outputFile, keys, cipherMod);
+        else
+            return new Encrypt(scanDir, keys, cipherMod);
     }
 
 }

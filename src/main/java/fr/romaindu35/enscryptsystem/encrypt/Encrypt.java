@@ -15,22 +15,37 @@ public class Encrypt {
 
     private File inputFile;
     private File outputFile;
-    private Keys keys;
-    private CipherMod cipherMod;
+
     private ScanDir scanDir;
     private String extension;
 
-    protected Encrypt(File inputFile, File outputFile, Keys keys, CipherMod cipherMod, ScanDir scanDir) {
+    private Keys keys;
+    private CipherMod cipherMod;
+
+    private Encrypt.Type type;
+
+    protected Encrypt(File inputFile, File outputFile, Keys keys, CipherMod cipherMod) {
         this.inputFile = inputFile;
         this.outputFile = outputFile;
         this.keys = keys;
         this.cipherMod = cipherMod;
-        this.scanDir = scanDir;
-        this.extension = scanDir.getConverExtension();
+
+        this.type = Encrypt.Type.FILE;
     }
 
-    public void launch() {
-        if (!scanDir.isActivated())
+    protected Encrypt(ScanDir scanDir, Keys keys, CipherMod cipherMod) {
+        this.keys = keys;
+        this.cipherMod = cipherMod;
+        this.scanDir = scanDir;
+        this.extension = scanDir.getConverExtension();
+        this.inputFile = scanDir.getInput_directory();
+        this.outputFile = scanDir.getOutput_directory();
+
+        this.type = Encrypt.Type.DIR;
+    }
+
+    public void run() {
+        if (type == Type.FILE)
             crypt(inputFile, outputFile);
         else {
             for (File listFile : inputFile.listFiles()) {
@@ -45,8 +60,6 @@ public class Encrypt {
                     crypt(listFile, new File(outputFile.getPath() + "/" + listFile.getName()));
                 }
             }
-
-
         }
     }
 
@@ -57,5 +70,10 @@ public class Encrypt {
         } catch (NoSuchPaddingException | NoSuchAlgorithmException | InvalidKeyException | IOException | BadPaddingException | IllegalBlockSizeException e) {
             e.printStackTrace();
         }
+    }
+
+    enum Type {
+        FILE,
+        DIR
     }
 }
