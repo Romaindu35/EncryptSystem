@@ -4,7 +4,7 @@ import java.io.File;
 
 public class FileDoesntExistsExecption extends Exception {
     public FileDoesntExistsExecption(File file) {
-        System.out.println("Le fichier : " + file.getName() +
-                ", qui a pour chemin absolu " + file.getAbsolutePath() + " n'existe pas.");
+        System.out.println("The file : " + file.getName() +
+                ", which has for absolute path " + file.getAbsolutePath() + " don't exist.");
     }
 }
