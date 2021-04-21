@@ -12,12 +12,22 @@ public class Filter {
 
     }
 
+    /**
+     * function to set extension to use
+     * @param extension : extension to use
+     * @return : instance of the class
+     */
     public Filter extensionUse(String extension) {
         this.extensionUse.add(extension);
         this.onlyExtensionUse = true;
         return this;
     }
 
+    /**
+     * function to set extensions to use
+     * @param extension : list of extension to use
+     * @return : instance of the class
+     */
     public Filter extensionUse(List<String> extension) {
         this.extensionUse = extension;
         this.onlyExtensionUse = false;

@@ -44,6 +44,9 @@ public class Encrypt {
         this.type = Encrypt.Type.DIR;
     }
 
+    /**
+     * Function to crypt/decrypt file
+     */
     public void run() {
         if (type == Type.FILE)
             crypt(inputFile, outputFile);

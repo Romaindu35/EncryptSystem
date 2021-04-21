@@ -24,6 +24,10 @@ public class EncryptMemory {
         this.cipherMod = cipherMod;
     }
 
+    /**
+     *
+     * @return : return file after input file crypt or decrypt
+     */
     public File loadInMemory() {
         try {
             File temp = File.createTempFile(inputFile.getName().split("\\.")[0], "." + inputFile.getName().split("\\.")[1]);

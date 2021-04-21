@@ -9,24 +9,24 @@ public class Files extends File {
         super(pathname);
     }
 
-    public boolean exists(Boolean afficheInforamtion) {
+    public boolean exists(Boolean showInformation) {
         File file = new File(this.getPath());
 
-        return exists(file, afficheInforamtion);
+        return exists(file, showInformation);
     }
 
-    public static boolean exists(File aVerifier) {
-        return exists(aVerifier, false);
+    public static boolean exists(File toVerify) {
+        return exists(toVerify, false);
     }
 
-    public static boolean exists(File fichier, Boolean afficheInforamtion) {
-        if (afficheInforamtion) {
-            if (fichier.exists())
-                System.out.println("Le fichier : " + fichier.getName() + ", qui a pour chemin absolu " + fichier.getAbsolutePath() + " existe.");
+    public static boolean exists(File file, Boolean showInformation) {
+        if (showInformation) {
+            if (file.exists())
+                System.out.println("The file : " + file.getName() + ", which has for absolute path " + file.getAbsolutePath() + " exist.");
             else
-                System.out.println("Le fichier : " + fichier.getName() + ", qui a pour chemin absolu " + fichier.getAbsolutePath() + " n'existe pas.");
+                System.out.println("The file : " + file.getName() + ", which has for absolute path " + file.getAbsolutePath() + " don't exist.");
         }
-        if (fichier.exists())
+        if (file.exists())
             return true;
         return false;
     }
