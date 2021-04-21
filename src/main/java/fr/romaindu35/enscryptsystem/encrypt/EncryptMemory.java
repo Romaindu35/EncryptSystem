@@ -18,7 +18,7 @@ public class EncryptMemory {
     private Keys keys;
     private CipherMod cipherMod;
 
-    public EncryptMemory(File inputFile, Keys keys, CipherMod cipherMod) {
+    protected EncryptMemory(File inputFile, Keys keys, CipherMod cipherMod) {
         this.inputFile = inputFile;
         this.keys = keys;
         this.cipherMod = cipherMod;
