@@ -1,21 +1,40 @@
+[version]: https://img.shields.io/maven-central/v/com.github.romaindu35/enscryptsystem.svg?label=Download
+[download]: https://search.maven.org/search?q=g:%22com.github.romaindu35%22%20AND%20a:%22enscryptsystem%22
+
 # EncryptSystem
-# Dev by Romaindu35
+### Dev by Romaindu35
 Encrypt System simplifies the creation of a system of obfuscation of your code.
 
 # How to download it ?
 
 To download it you have 2 choices: compile the library or use a buildTool as a gradle.
 
-# Use with gradle
+Latest version :
 
-```
+[ ![version][] ][download]
+
+### Use with gradle
+
+```groovy
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation 'com.github.romaindu35:enscryptsystem:TAG'
+    implementation 'com.github.romaindu35:enscryptsystem:VERSION'
 }
+```
+
+### Use with maven
+
+```xml
+<dependencies>
+    <dependency>
+      <groupId>com.github.romaindu35</groupId>
+      <artifactId>enscryptsystem</artifactId>
+      <version>VERSION</version>
+    </dependency>
+</dependencies>
 ```
 
 # How to use it
@@ -56,6 +75,13 @@ ScanDir scanDir = scanDirBuilder.build();
 EncryptBuilder encryptBuilder = new EncryptBuilder(imputFiles, outputFiles).setCipherMod(CipherMod.ENCRYPT_MODE).setKeys(new Keys("Yourkeys")).setScanDir(scanDir);
 Encrypt encrypt = encryptBuilder.build();
 encrypt.launch();
+```
+
+Do you want the generated file to be deleted after closing the program ? With EncryptMemory you can do it !
+```java
+EncryptMemoryBuilder encryptMemoryBuilder = new EncryptMemoryBuilder(imputFiles).setCipherMod(CipherMod.ENCRYPT_MODE).setkeys(new Keys("Yourkeys"));
+EncryptMemory encryptMemory = encryptMemoryBuilder.build();
+File file = encryptMemory.loadInMemory(); // loadInMemory return file after input file crypt/decrypt
 ```
 
 # Notes
