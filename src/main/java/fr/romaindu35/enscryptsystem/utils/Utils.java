@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
@@ -19,6 +20,9 @@ import java.security.NoSuchAlgorithmException;
 public class Utils {
 
     public static void crypt(File file, File temp, Keys keys, CipherMod cipherMod) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IOException, IllegalBlockSizeException, BadPaddingException {
+        if (!Files.exists(temp.toPath()))
+            temp.getParentFile().mkdirs();
+
         Key secretKey = new SecretKeySpec(keys.getKey().getBytes(), "AES");
         Cipher cipher = Cipher.getInstance("AES");
         cipher.init(cipherMod.getEncryptMod(), secretKey);
